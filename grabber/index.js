@@ -1,3 +1,7 @@
-var movieGrabber = require('./lib/main');
+var movieGrabber = require('./lib/movieGrabber');
+var comingsoonGrabber = require('./lib/comingsoonGrabber');
 
-module.exports = movieGrabber;
+module.exports = {
+    movieGrabber: movieGrabber,
+    comingsoonGrabber: comingsoonGrabber
+};

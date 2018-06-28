@@ -3,8 +3,11 @@ var grabber = require('../grabber');
 var Movies = require('../models/movies');
 var router = express.Router();
 
-router.get('/fetchmovies', (req, res, next) => {
-    grabber(movies => {
+/**
+ * Fetch Movies
+ */
+router.get('/fetch', (req, res, next) => {
+    grabber.movieGrabber(movies => {
         movies.map(movie => {
             var movieObj = new Movies(movie)
             Movies.fetchMovies(movieObj)
@@ -19,8 +22,12 @@ router.get('/fetchmovies', (req, res, next) => {
     });
 });
 
-router.delete('/clearall', (req, res, next) => {
-    Movies.clearAll()
+
+/**
+ * Clear Movie Collection
+ */
+router.delete('/clear', (req, res, next) => {
+    Movies.clearMovies()
         .then(movie => {
             res.json({success: true, msg:'Collection Cleared!'});
         })
@@ -29,7 +36,11 @@ router.delete('/clearall', (req, res, next) => {
         });
 });
 
-router.get('/getmovies', (req, res, next) => {
+
+/**
+ * Get Movies
+ */
+router.get('/get', (req, res, next) => {
     Movies.getMovies()
         .then(movies => {
             res.json({success: true, movies: movies});

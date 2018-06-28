@@ -1,28 +1,52 @@
 # ShowMov -  Back-end Side
 
-## Usage
+## Tiny Server for ShowMov-App.
+## Shamelessly scrapped from certain site with web-scapper.
 
-> Fetching Movies for Database.
+### Usage:
+---
+
+> 'GET' Fetching Movies for Database.
 
 ``` 
-    /api/v1/fetchmovies
+    /api/v1/movies/fetch
 ```
 
-> Clearing Database Collection.
+> 'GET' Fetching Movies.
 
 ``` 
-    /api/v1/clearall
+    /api/v1/movies/get
 ```
 
-> Fetching Movies.
+> 'DELETE' Clearing Movie Database Collection.
 
 ``` 
-    /api/v1/getmovies
+    /api/v1/movies/clear
 ```
 ___
 
-## Todo
+> 'GET' Fetching Comingsoons for Database.
+
+``` 
+    /api/v1/comingsoons/fetch
+```
+
+> 'GET' Fetching Comingsoons.
+
+``` 
+    /api/v1/comingsoons/get
+```
+
+> 'DELETE' Clearing Comingsoon Database Collection.
+
+``` 
+    /api/v1/comingsoons/clear
+```
+
+---
+
+### Todo:
 
 - [ ] Add Api-Key
 - [ ] Proper Logging
-- [ ] `Coming Soon` Grabber
+- [x] `Coming Soon` Grabber

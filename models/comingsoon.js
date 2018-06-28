@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var movieSchema = new Schema({
+var comingsoonSchema = new Schema({
     title: String,
     image: String,
     time: String,
@@ -13,31 +13,31 @@ var movieSchema = new Schema({
     video: String
 });
 
-var Movie = mongoose.model('Movie', movieSchema);
+var Comingsoon = mongoose.model('Comingsoon', comingsoonSchema);
 
 
-module.exports = Movie;
+module.exports = Comingsoon;
 
-module.exports.fetchMovies = movies => {
+module.exports.fetchComingsoons = comingsoons => {
     return new Promise((resolve, reject) => {
-        movies.save()
+        comingsoons.save()
             .then(movie => resolve(movie))
             .catch(error => reject(error))
     });
 }
 
-module.exports.getMovies = () => {
+module.exports.getComingsoons = () => {
     return new Promise((resolve, reject) => {
-        Movie.find()
-            .then(movies => resolve(movies))
+        Comingsoon.find()
+            .then(comingsoons => resolve(comingsoons))
             .catch(error => reject(error))
     });
 }
 
-module.exports.clearMovies = () => {
+module.exports.clearComingsoons = () => {
     return new Promise((resolve, reject) => {
-        Movie.remove({})
-            .then(movies => resolve(movies))
+        Comingsoon.remove({})
+            .then(comingsoons => resolve(comingsoons))
             .catch(error => reject(error))
     });
 }

@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 var winston = require('winston');
 
 var config = require('./config/config');
-var indexRoute = require('./routes');
+var moviesRoute = require('./routes/movies');
+var comingsoonsRoute = require('./routes/comingsoons');
 
 var app = express();
 
@@ -15,7 +16,8 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.use('/api/v1', indexRoute);
+app.use('/api/v1/movies', moviesRoute);
+app.use('/api/v1/comingsoons', comingsoonsRoute);
 
 /* Logger */
 var logger = winston.createLogger({
