@@ -1,0 +1,25 @@
+{
+  "name": "movshow-server",
+  "version": "1.0.0",
+  "description": "Movie-Shower Back-end Part",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "Backend",
+    "Server",
+    "App",
+    "Api"
+  ],
+  "author": "jexulie",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.7",
+    "request": "^2.87.0",
+    "winston": "^3.0.0"
+  }
+}
