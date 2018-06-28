@@ -1,7 +1,7 @@
 # ShowMov -  Back-end Side
 
 ## Tiny Server for ShowMov-App.
-## Shamelessly scrapped from certain site with web-scapper.
+## Shamelessly scrapped a from certain site with web-scapper.
 
 ### Usage:
 ---
