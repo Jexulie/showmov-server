@@ -26,7 +26,7 @@
     /api/v1/movies/clear
 ```
 
-####Coming Soon:
+#### Coming Soon:
 ---
 
 > 'GET' Fetching Comingsoons for Database.
