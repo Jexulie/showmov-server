@@ -2,4 +2,4 @@
 /.vscode
 /config/keys.js
 /log
-/grabber/lib/main.js
+/grabber/lib/bin.js

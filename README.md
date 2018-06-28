@@ -55,3 +55,4 @@ Shamelessly scrapped from a certain site with web-scapper.
 - [ ] Add Api-Key
 - [ ] Proper Logging
 - [x] `Coming Soon` Grabber
+- [ ] Fix Strings in WebScapper
