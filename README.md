@@ -3,7 +3,9 @@
 ## Tiny Server for ShowMov-App.
 ## Shamelessly scrapped from a certain site with web-scapper.
 
-### Usage:
+### Usage
+
+#### Movies:
 ---
 
 > 'GET' Fetching Movies for Database.
@@ -23,7 +25,9 @@
 ``` 
     /api/v1/movies/clear
 ```
-___
+
+####Coming Soon:
+---
 
 > 'GET' Fetching Comingsoons for Database.
 
