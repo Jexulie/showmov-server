@@ -1,4 +1,5 @@
 /node_modules
 /.vscode
+/config/keys.js
 /log
 /grabber/lib/bin.js
