@@ -57,4 +57,4 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.all('*', (req, res) => res.redirect('/api/v1/404'));
 
-app.listen(config.port);
+app.listen(process.env.PORT ||config.port);
