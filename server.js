@@ -4,8 +4,12 @@ var mongoose = require('mongoose');
 var winston = require('winston');
 
 var config = require('./config/config');
+
 var moviesRoute = require('./routes/movies');
 var comingsoonsRoute = require('./routes/comingsoons');
+var archivesRoute = require('./routes/archives');
+var miscRoute = require('./routes/misc');
+var apiauthRoute = require('./routes/apiauth');
 
 var app = express();
 
@@ -18,6 +22,9 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api/v1/movies', moviesRoute);
 app.use('/api/v1/comingsoons', comingsoonsRoute);
+app.use('/api/v1/archives', archivesRoute);
+app.use('/api/v1/auth', apiauthRoute);
+app.use('/api/v1', miscRoute);
 
 /* Logger */
 var logger = winston.createLogger({
@@ -47,5 +54,7 @@ if (process.env.NODE_ENV !== 'production') {
         format: winston.format.simple()
     }));
 }
+
+app.all('*', (req, res) => res.redirect('/api/v1/404'));
 
 app.listen(config.port);

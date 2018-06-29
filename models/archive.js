@@ -13,7 +13,7 @@ var archiveSchema = new Schema({
     video: String
 });
 
-var Archive = mongoose.model('archive', archiveSchema);
+var Archive = mongoose.model('Archive', archiveSchema);
 
 
 module.exports = Archive;
@@ -40,4 +40,12 @@ module.exports.checkMovie = movie => {
         })
         .catch(error => reject(error))
     })
+}
+
+module.exports.getArchives = () => {
+    return new Promise((resolve, reject) => {
+        Archive.find({})
+        .then(archive => resolve(archive))
+        .catch(error => reject(error))
+    });
 }

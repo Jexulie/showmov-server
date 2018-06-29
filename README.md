@@ -52,8 +52,10 @@ Shamelessly scrapped from a certain site with web-scapper.
 
 ### Todo:
 
-- [ ] Add Api-Key
+- [x] Add Api-Key
 - [ ] Proper Logging
 - [x] `Coming Soon` Grabber
 - [ ] Fix Strings in WebScapper
 - [x] Add an Archive for Movies
+- [ ] Better Error Control
+- [x] Add Misc Routes

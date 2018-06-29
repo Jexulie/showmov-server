@@ -18,6 +18,7 @@
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
+    "hat": "0.0.3",
     "mongoose": "^5.1.7",
     "request": "^2.87.0",
     "winston": "^3.0.0"

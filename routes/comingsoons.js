@@ -1,25 +1,35 @@
 var express = require('express');
 var grabber = require('../grabber');
-var Comingsoons = require('../models/comingsoon');
+var Comingsoons = require('../models/comingsoons');
+var Apiauth = require('../models/apiauth');
 var router = express.Router();
 
 /**
  * Fetch ComingSoons
  */
 router.get('/fetch', (req, res, next) => {
-    grabber.comingsoonGrabber(comingsoons => {
-        comingsoons.map(comingsoon => {
-            var comingsoonObj = new Comingsoons(comingsoon)
-            Comingsoons.fetchComingsoons(comingsoonObj)
-            .then(comingsoon => {
-                console.info('Comingsoon Added!');
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        });
-        res.json({success: true, msg:'Done!'});
-    });
+    var apikey = req.query.apikey;
+    Apiauth.autherize(apikey)
+        .then(user => {
+            if(user){
+                grabber.comingsoonGrabber(comingsoons => {
+                    comingsoons.map(comingsoon => {
+                        var comingsoonObj = new Comingsoons(comingsoon)
+                        Comingsoons.fetchComingsoons(comingsoonObj)
+                        .then(comingsoon => {
+                            console.info('Comingsoon Added!');
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                    });
+                    res.json({success: true, msg:'Done!'});
+                });
+            }else{
+                res.redirect('/api/v1/403');
+            }
+        })
+        .catch(error => res.json({success: false, error:error}))
 });
 
 
@@ -27,13 +37,22 @@ router.get('/fetch', (req, res, next) => {
  * Clear ComingSoon Collection
  */
 router.delete('/clear', (req, res, next) => {
-    Comingsoons.clearComingsoons()
-        .then(comingsoon => {
-            res.json({success: true, msg:'Collection Cleared!'});
+    var apikey = req.query.apikey;
+    Apiauth.autherize(apikey)
+        .then(user => {
+            if(user){
+                Comingsoons.clearComingsoons()
+                    .then(comingsoon => {
+                        res.json({success: true, msg:'Collection Cleared!'});
+                    })
+                    .catch(error => {
+                        res.json({success: false, error:error});
+                    });
+            }else{
+                res.redirect('/api/v1/403');
+            }
         })
-        .catch(error => {
-            res.json({success: false, error:error});
-        });
+        .catch(error => res.json({success: false, error:error}))
 });
 
 
@@ -41,12 +60,22 @@ router.delete('/clear', (req, res, next) => {
  * Get ComingSoons
  */
 router.get('/get', (req, res, next) => {
-    Comingsoons.getComingsoons()
-        .then(comingsoons => {
-            res.json({success: true, comingsoons: comingsoons});
+    var apikey = req.query.apikey;
+    Apiauth.autherize(apikey)
+        .then(user => {
+            if(user){
+                Comingsoons.getComingsoons()
+                    .then(comingsoons => {
+                        res.json({success: true, comingsoons: comingsoons});
+                    })
+                    .catch(error => {
+                        res.json({success: false, error:error});
+                    });
+            }else{
+                res.redirect('/api/v1/403');
+            }
         })
-        .catch(error => {
-            res.json({success: false, error:error});
-        });
+        .catch(error => res.json({success: false, error:error}))
 });
+
 module.exports = router;
