@@ -56,3 +56,4 @@ Shamelessly scrapped from a certain site with web-scapper.
 - [ ] Proper Logging
 - [x] `Coming Soon` Grabber
 - [ ] Fix Strings in WebScapper
+- [ ] Add an Archive for Movies
