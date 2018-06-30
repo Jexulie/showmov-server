@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 var config = require('./config/config');
 var logger = require('./config/logger');
@@ -15,6 +16,7 @@ var app = express();
 
 mongoose.connect(config.db);
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
