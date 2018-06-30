@@ -2,7 +2,10 @@ var express = require('express');
 var Movies = require('../models/movies');
 var Archive = require('../models/archive');
 var Apiauth = require('../models/apiauth');
+var logger = require('../config/logger');
 var router = express.Router();
+
+
 
 /**
  * Archive Movies
@@ -31,13 +34,13 @@ router.get('/save', (req, res, next) => {
                                     .then(check => {
                                         if(check === false){
                                             Archive.addArchives(ArcObj)
-                                                .then(archive => console.info('Movie Archived!'))
-                                                .catch(error => console.error(error))
+                                                .then(archive => logger.info(`${archive.title} Archived!`))
+                                                .catch(error => logger.error(error))
                                         }else{
-                                            console.log('Movies Already Archived!');
+                                            logger.info(`${ArcObj.title} Already Archived!` );
                                         }
                                     })
-                                    .catch(error => console.error(error))
+                                    .catch(error => logger.error(error))
                         });
                         res.json({success: true, msg:'Done!'});
                     })

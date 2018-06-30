@@ -1,9 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var winston = require('winston');
 
 var config = require('./config/config');
+var logger = require('./config/logger');
 
 var moviesRoute = require('./routes/movies');
 var comingsoonsRoute = require('./routes/comingsoons');
@@ -26,35 +26,6 @@ app.use('/api/v1/archives', archivesRoute);
 app.use('/api/v1/auth', apiauthRoute);
 app.use('/api/v1', miscRoute);
 
-/* Logger */
-var logger = winston.createLogger({
-    level: 'info',
-    transports: [
-        new winston.transports.Console({
-            filename: './log/console.log',
-            level: 'info'
-        }),
-        new winston.transports.File({
-            filename: './log/error.log',
-            level: 'error'
-        }),
-        new winston.transports.File({
-            filename: './log/combined.log',
-            level: 'info'
-        })
-    ]
-});
-winston.format.combine(
-    winston.format.colorize(),
-    winston.format.json()
-);
-
-if (process.env.NODE_ENV !== 'production') {
-    logger.add(new winston.transports.Console({
-        format: winston.format.simple()
-    }));
-}
-
 app.all('*', (req, res) => res.redirect('/api/v1/404'));
 
-app.listen(process.env.PORT ||config.port);
+app.listen(process.env.PORT || config.port);

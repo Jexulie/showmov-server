@@ -2,6 +2,7 @@ var express = require('express');
 var grabber = require('../grabber');
 var Comingsoons = require('../models/comingsoons');
 var Apiauth = require('../models/apiauth');
+var logger = require('../config/logger');
 var router = express.Router();
 
 /**
@@ -17,10 +18,10 @@ router.get('/fetch', (req, res, next) => {
                         var comingsoonObj = new Comingsoons(comingsoon)
                         Comingsoons.fetchComingsoons(comingsoonObj)
                         .then(comingsoon => {
-                            console.info('Comingsoon Added!');
+                            logger.info(`${comingsoon.title} Added to Database.`);
                         })
                         .catch(error => {
-                            console.error(error);
+                            logger.error(`Error message: ${error}`);
                         });
                     });
                     res.json({success: true, msg:'Done!'});

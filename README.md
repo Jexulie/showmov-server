@@ -55,13 +55,13 @@ Shamelessly scrapped from a certain site with web-scapper.
 > "GET" Archiving Movies to the Database.
 
 ``` 
-    /api/v1/archive/save
+    /api/v1/archives/save
 ```
 
 > "GET" Fetching archive.
 
 ``` 
-    /api/v1/archive/get
+    /api/v1/archives/get
 ```
 
 #### Api-Key:
@@ -84,7 +84,7 @@ Shamelessly scrapped from a certain site with web-scapper.
 ### Todo:
 
 - [x] Add Api-Key
-- [ ] Proper Logging
+- [x] Proper Logging
 - [x] `Coming Soon` Grabber
 - [ ] Fix Strings in WebScapper
 - [x] Add an Archive for Movies
