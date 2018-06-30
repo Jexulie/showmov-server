@@ -5,10 +5,10 @@ var archiveSchema = new Schema({
     title: String,
     image: String,
     time: String,
-    genre: String,
+    genre: [],
     score: String,
     director: String,
-    stars: String,
+    stars: [],
     info: String,
     video: String
 });

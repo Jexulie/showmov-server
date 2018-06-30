@@ -86,7 +86,7 @@ Shamelessly scrapped from a certain site with web-scapper.
 - [x] Add Api-Key
 - [x] Proper Logging
 - [x] `Coming Soon` Grabber
-- [ ] Fix Strings in WebScapper
+- [x] Fix Strings in WebScapper
 - [x] Add an Archive for Movies
-- [ ] Better Error Control
+- [x] Better Error Control
 - [x] Add Misc Routes
