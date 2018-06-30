@@ -45,6 +45,7 @@ router.get('/save', (req, res, next) => {
                         res.json({success: true, msg:'Done!'});
                     })
                     .catch(error => {
+                        logger.error(error);
                         res.json({success: false, error:error});
                     });
             }else{
@@ -67,13 +68,17 @@ router.get('/get', (req, res, next) => {
                         res.json({success: true, archive:archive});
                     })
                     .catch(error => {
+                        logger.error(error);
                         res.json({success: false, error:error});
                     })
             }else{
                 res.redirect('/api/v1/403');
             }
         })
-        .catch(error => res.json({success: false, error:error}))
+        .catch(error => {
+            logger.error(error);
+            res.json({success: false, error:error})
+            })
 });
 
 module.exports = router;

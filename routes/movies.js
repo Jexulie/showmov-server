@@ -30,7 +30,10 @@ router.get('/fetch', (req, res, next) => {
                 res.redirect('/api/v1/403');
             }
         })
-        .catch(error => res.json({success: false, error:error}))
+        .catch(error => {
+            logger.error(error);
+            res.json({success: false, error:error})
+        })
 });
 
 
@@ -48,13 +51,17 @@ router.delete('/clear', (req, res, next) => {
                     res.json({success: true, msg:'Collection Cleared!'});
                 })
                 .catch(error => {
+                    logger.error(error);
                     res.json({success: false, error:error});
                 });
             }else{
                 res.redirect('/api/v1/403');
             }
         })
-        .catch(error => res.json({success: false, error:error}))
+        .catch(error => {
+            logger.error(error);
+            res.json({success: false, error:error})
+        })
 });
 
 
@@ -77,7 +84,10 @@ router.get('/get', (req, res, next) => {
                 res.redirect('/api/v1/403');
             }
         })
-        .catch(error => res.json({success: false, error:error}))
+        .catch(error => {
+            logger.error(error);
+            res.json({success: false, error:error})
+        })
 });
 
 
