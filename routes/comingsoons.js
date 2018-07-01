@@ -73,6 +73,7 @@ router.get('/get', (req, res, next) => {
             if(user){
                 Comingsoons.getComingsoons()
                     .then(comingsoons => {
+                        refreshComingsoons();
                         res.json({success: true, comingsoons: comingsoons});
                     })
                     .catch(error => {
@@ -89,3 +90,29 @@ router.get('/get', (req, res, next) => {
 });
 
 module.exports = router;
+
+/**
+ * ComingSoon Clear -> Fetch
+ * Automation
+ */
+function refreshComingsoons(){
+    Comingsoons.clearComingsoons()
+        .then(comingsoon => {
+            logger.info(`Comingsoon Deleted from Database!`);
+        })
+        .catch(error => {
+            logger.error(error);
+        });
+    grabber.comingsoonGrabber(comingsoons => {
+        comingsoons.map(comingsoon => {
+            var comingsoonObj = new Comingsoons(comingsoon)
+            Comingsoons.fetchComingsoons(comingsoonObj)
+            .then(comingsoon => {
+                logger.info(`${comingsoon.title} Added to Database.`);
+            })
+            .catch(error => {
+                logger.error(`Error message: ${error}`);
+            });
+        });
+    });
+}
